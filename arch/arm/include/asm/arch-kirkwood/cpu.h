@@ -139,7 +139,7 @@ struct kwcpu_registers {
 
 /*
  * GPIO Registers
- * Ref: Datasheet sec:A.19
+ * Ref: Datasheet sec:A.1.9
  */
 struct kwgpio_registers {
 	u32 dout;
@@ -150,6 +150,21 @@ struct kwgpio_registers {
 	u32 irq_cause;
 	u32 irq_mask;
 	u32 irq_level;
+};
+
+/*
+ * Timer Registers
+ * Ref: Datasheet sec:A.3.4
+ */
+struct kwtimer_registers {
+	u32 ctl; /* 0x20300 */
+	u32 pad[3];
+	u32 rel0; /* 0x20310 */
+	u32 val0; /* 0x20314 */
+	u32 rel1; /* 0x20318 */
+	u32 val1; /* 0x2031C */
+	u32 relwd; /* 0x20320 */
+	u32 valwd; /* 0x20324 -- default val: 0x7FFFFFFF*/
 };
 
 /*
