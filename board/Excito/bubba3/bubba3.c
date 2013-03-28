@@ -229,31 +229,52 @@ int b3_gpio1_irq_enable (u32 mask, u8 enable) {
 	writel(readl(&gpio1reg->irq_level) & ~B3_POWER_BUTTON, &gpio1reg->irq_level);
 
 	/* unmask edge event interrupt*/
-	if (enable)
+	if (enable>0)
 		writel(readl(&gpio1reg->irq_mask) | B3_POWER_BUTTON, &gpio1reg->irq_mask);
 	else
 		writel(readl(&gpio1reg->irq_mask) & ~B3_POWER_BUTTON, &gpio1reg->irq_mask);
 	return readl(&gpio1reg->irq_mask) & B3_POWER_BUTTON;
  }
 
+/*
+ * Enable/Disable FIQs or IRQs
+ *
+ */
+inline void b3_enable_irqs (void) {
+	printf ("TODO: %s\n", __FUNCTION__);
+}
+
+inline void b3_enable_fiqs (void) {
+	printf ("TODO: %s\n", __FUNCTION__);
+}
+
+inline void b3_disable_irqs (void) {
+	printf ("TODO: %s\n", __FUNCTION__);
+}
+
+inline void b3_disable_fiqs (void) {
+	printf ("TODO: %s\n", __FUNCTION__);
+}
 
 /*
  * use the CP15 instruction for deepsleep (wait-for-interrupt) and power saveings
  */
 inline void b3_wait_for_interrupt (void) {
-	printf ("Jag drivar runt nu!\n");
-
 #if 0
-	if (b3_gpio1_irq_enable (B3_POWER_BUTTON, 1))
-		printf ("successfully unmasked power button mask.\n");
-	else
-		printf ("failed to unmask power button mask.\n");
-#endif
+	//FIXME we can not write the registers as it seems
+	// this is the only thing holding this back AFAIK
+	printf ("Jag drivar runt nu!\n");
 	__asm__ __volatile__ (
-						"MOV R0, #0\n"
-						"MCR p15, 0, r0, c7, c0, 4"
-						 : : : "r0");
+				"MOV R0, #0\n"
+				"MCR p15, 0, r0, c7, c0, 4"
+				 : : : "r0");
 	printf ("hey! ho! - let's go!\n");
+#else
+	// yes this is dumb
+	volatile int i = 0;
+	while (i++ < 100)
+		;
+#endif
 }
 
 /*
