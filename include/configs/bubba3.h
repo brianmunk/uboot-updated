@@ -83,7 +83,7 @@
 #define CONFIG_SYS_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, \
 					  115200,230400, 460800, 921600 }
 /* auto boot */
-#define CONFIG_BOOTDELAY	1
+#define CONFIG_BOOTDELAY	5
 
 /* Run from ram */
 /*FIXME, was previously off, so recheck*/
@@ -245,7 +245,7 @@
 #define CONFIG_SYS_MEMTEST_START 0x00400000	/* 4M */
 #define CONFIG_SYS_MEMTEST_END	0x007fffff	/*(_8M -1) */
 #define CONFIG_SYS_RESET_ADDRESS 0xffff0000	/* Rst Vector Adr */
-#define CONFIG_SYS_MAXARGS	16	/* max number of command args */
+#define CONFIG_SYS_MAXARGS	60	/* max number of command args */
 
 /*
  * Ethernet Driver configuration
