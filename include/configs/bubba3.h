@@ -253,8 +253,8 @@
 #ifdef CONFIG_CMD_NET
 #define CONFIG_NET_MULTI	/* specify more that one ports available */
 #define CONFIG_MII		/* expose smi over miiphy interface */
-#define CONFIG_MVGBE_EGIGA	/* Enable kirkwood Gbe Controller Driver */
-#define CONFIG_MVGBE_EGIGA_PORTS	{1,1}	/* enable first port */
+#define CONFIG_MVGBE		/* Enable kirkwood Gbe Controller Driver */
+#define CONFIG_MVGBE_PORTS	{1,1}	/* enable first port */
 #define CONFIG_PHY_ADDRS	{0x08,0x18}
 #define CONFIG_ENV_OVERWRITE	/* ethaddr can be reprogrammed */
 #define CONFIG_RESET_PHY_R	/* use reset_phy() to init switch and PHY */
